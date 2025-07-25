@@ -3,6 +3,8 @@ from flask_restx import Namespace, Resource, fields
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.services import facade
 from app.models.user import User
+from flask import Blueprint, request, jsonify
+from app.services.facade import UserService
 
 api = Namespace('users', description='User operations')
 
@@ -128,3 +130,31 @@ class UserResource(Resource):
             'last_name': updated_user.last_name,
             'email': updated_user.email
         }, 200
+
+
+    user_service = UserService()
+    bp = Blueprint('users', __name__)
+
+    @bp.route('/users', methods=['POST'])
+    def create_user():
+        data = request.get_json()
+        user = user_service.create_user(data)
+        return jsonify({"id": user.id, "email": user.email}), 201
+
+    @bp.route('/users', methods=['GET'])
+    def list_users():
+        users = user_service.get_all()
+        return jsonify([{"id": u.id, "email": u.email} for u in users])
+
+    @bp.route('/users/<int:user_id>', methods=['GET'])
+    def get_user(user_id):
+        user = user_service.get(user_id)
+        if not user:
+            return jsonify({"error": "Not found"}), 404
+        return jsonify({"id": user.id, "email": user.email})
+
+    @bp.route('/users/<int:user_id>', methods=['DELETE'])
+    def delete_user(user_id):
+        if user_service.delete(user_id):
+            return jsonify({"message": "Deleted"}), 204
+        return jsonify({"error": "Not found"}), 404

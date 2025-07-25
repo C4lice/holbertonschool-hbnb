@@ -51,3 +51,21 @@ def create_app(config_class=config['development']):
     restx_api.add_namespace(reviews_ns, path='/api/v1/reviews')
 
     return app
+
+def create_app():
+    app = Flask(__name__)
+    app.config.from_pyfile('config.py')
+
+    db.init_app(app)
+    bcrypt.init_app(app)
+
+    app.register_blueprint(user_bp, url_prefix='/api/v1')
+
+    with app.app_context():
+        db.create_all()
+
+    return app
+
+if __name__ == "__main__":
+    app = create_app()
+    app.run(debug=True)

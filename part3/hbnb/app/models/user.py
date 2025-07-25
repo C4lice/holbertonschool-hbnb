@@ -3,6 +3,9 @@ from app import db
 from sqlalchemy.orm import validates
 import re
 from app.extensions import bcrypt
+from sqlalchemy import Column, String, Boolean, DateTime, Integer
+from datetime import datetime
+from app.extensions import db
 
 class User(BaseModel):
 
@@ -90,3 +93,19 @@ class User(BaseModel):
             'is_admin': self.is_admin
 
         }
+
+class User(db.Model):
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key=True)
+    first_name = Column(String(50), nullable=False)
+    last_name = Column(String(50), nullable=False)
+    email = Column(String(120), unique=True, nullable=False)
+    password = Column(String(255), nullable=False)
+    is_admin = Column(Boolean, default=False)
+
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    def __repr__(self):
+        return f"<User {self.email}>"
