@@ -1,5 +1,85 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const API_URL = 'http://localhost:5001/api/v1'; // <--- modifie si besoin
+
+    /** Vérifie le statut de l’API */
+    fetch(`${API_URL}/status/`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'OK') {
+                console.log("API status: OK");
+                document.querySelector("#api_status").classList.add("available");
+            } else {
+                console.warn("API not OK");
+            }
+        })
+        .catch(err => {
+            console.error("Erreur de connexion à l'API", err);
+        });
+
+    /** Charge les places dynamiquement */
+    fetch(`${API_URL}/places_search/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({}) // Tous les lieux
+    })
+        .then(response => response.json())
+        .then(places => {
+            const placesContainer = document.getElementById("places");
+            places.forEach(place => {
+                const placeCard = document.createElement("div");
+                placeCard.className = "place-card";
+                placeCard.innerHTML = `
+                    <h4>${place.name}</h4>
+                    <div class="properties">
+                        <div>${place.max_guest} Guests</div>
+                        <div>${place.number_rooms} Rooms</div>
+                        <div>${place.number_bathrooms} Bathrooms</div>
+                    </div>
+                    <p class="place-description">${place.description || ''}</p>
+                `;
+                placesContainer.appendChild(placeCard);
+            });
+        })
+        .catch(error => console.error("Erreur lors du chargement des places :", error));
+
+    /** Exemple : filtrage par amenity */
+    document.getElementById("filter-button")?.addEventListener("click", () => {
+        const amenityIds = Array.from(document.querySelectorAll("input[type='checkbox']:checked"))
+            .map(checkbox => checkbox.dataset.id);
+
+        fetch(`${API_URL}/places_search/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ amenities: amenityIds })
+        })
+            .then(res => res.json())
+            .then(places => {
+                const placesContainer = document.getElementById("places");
+                placesContainer.innerHTML = ""; // reset
+                places.forEach(place => {
+                    const card = document.createElement("div");
+                    card.className = "place-card";
+                    card.innerHTML = `
+                        <h4>${place.name}</h4>
+                        <div class="properties">
+                            <div>${place.max_guest} Guests</div>
+                            <div>${place.number_rooms} Rooms</div>
+                            <div>${place.number_bathrooms} Bathrooms</div>
+                        </div>
+                        <p class="place-description">${place.description || ''}</p>
+                    `;
+                    placesContainer.appendChild(card);
+                });
+            });
+    });
+});
+
 :root {
-	--color-primary: #2b0a10;
+	--color-primary: #4c8d92;
 	--color-black: #090909;
 	--color-white: #fafafa;
 	--color-light-grey: #f2f2f2;
@@ -266,9 +346,9 @@ main #review input {
     stroke-width: 5px;
 }
 
-.logo-red-top {
+.logo-green-top {
     fill: none;
-    stroke: #2b0a10;
+    stroke: #4c8d92;
     stroke-linecap: round;
     stroke-miterlimit: 10;
     stroke-width: 5px;
@@ -286,9 +366,9 @@ main #review input {
     }
 }
 
-.logo-red-bottom {
+.logo-green-bottom {
     fill: none;
-    stroke: #2b0a10;
+    stroke: #4c8d92;
     stroke-linecap: round;
     stroke-miterlimit: 10;
     stroke-width: 5px;
