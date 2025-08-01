@@ -7,6 +7,18 @@
     <link rel="icon" type="image/png" href="images/icon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
+<div id="signup-form" style="display:none; position:absolute; top:80px; left:50%; transform:translateX(-50%); background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+    <h2>Créer un compte</h2>
+    <form>
+        <label for="username">Nom d'utilisateur :</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="email">Email :</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="password">Mot de passe :</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit">S'inscrire</button>
+    </form>
+</div>
 <body>
     <!-- HEADER -->
     <header class="header">
@@ -77,6 +89,16 @@
             </div>
             <div id="new-place">
                 <button>New Place</button>
+                <script>
+document.querySelectorAll('button').forEach(function(btn) {
+    if (btn.textContent.trim() === 'New Place') {
+        btn.onclick = function() {
+            // Exemple : ouvrir une popup ou rediriger vers une page de création
+            window.location.href = '/new_place';
+        };
+    }
+});
+</script>
             </div>
         </div>
     </main>
@@ -85,5 +107,10 @@
         <p>© 2025 Aupetit Laura - Holberton School.</p>
     </footer>
     <script src="scripts.js"></script>
+    <script>
+document.querySelector('#login-link button').onclick = function() {
+    document.getElementById('signup-form').style.display = 'block';
+};
+</script>
 </body>
 </html>

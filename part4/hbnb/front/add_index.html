@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    <img src="/front/images/logo.png" alt="App Logo" class="logo">
+    <nav>
+        <a href="/index" class="home-button">Home</a>
+        <a href="/login" id="login-link" class="login-button">Login</a>
+        <button id="logout-btn">Logout</button>
+    </nav>
+</header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Places</title>
+    <link rel="stylesheet" href="/front/styles.css">
+</head>
+
+<script>
+document.getElementById('login-link').onclick = function(event) {
+    event.preventDefault();
+    document.getElementById('signup-form').style.display = 'block';
+};
+
+document.querySelector('#signup-form form').onsubmit = function(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    fetch('http://localhost:5001/api/v1/users/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, email, password })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Compte créé avec succès !');
+            document.getElementById('signup-form').style.display = 'none';
+        } else {
+            alert('Erreur lors de la création du compte.');
+        }
+    });
+};
+</script>
+<body>
+    <header>
+        <img src="/front/images/logo.png" alt="App Logo" class="logo">
+        <nav>
+            <a href="/index" class="home-button">Home</a>
+            <a href="/login" id="login-link" class="login-button">Login</a>
+        </nav>
+    </header>
+    <main>
+        <img class="bg-image" src="/static/images/fond.jpg" alt="hotel background">
+        <section id="filter">
+            <label for="price-filter">Max Price:</label>
+            <select id="price-filter">
+                <!-- Options will be populated dynamically -->
+            </select>
+        </section>
+        <section id="places-list">
+            <!-- List of places will be populated dynamically -->
+        </section>
+    </main>
+    <!-- Ajoutez ce formulaire juste après le header -->
+<div id="signup-form" style="display:none; position:absolute; top:80px; left:50%; transform:translateX(-50%); background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+    <h2>Créer un compte</h2>
+    <form>
+        <label for="username">Nom d'utilisateur :</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="email">Email :</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="password">Mot de passe :</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit">S'inscrire</button>
+    </form>
+</div>
+<!-- Ajoutez ce script à la fin du body -->
+<script>
+document.getElementById('login-link').onclick = function(event) {
+    event.preventDefault();
+    document.getElementById('signup-form').style.display = 'block';
+};
+</script>
+    <footer>
+        <p>© 2025 Aupetit Laura - Holberton School.</p>
+    </footer>
+    <script src="/static/index.js"></script>
+    <script>
+document.getElementById('logout-btn').onclick = function() {
+    // Exemple : suppression du token local et redirection
+    localStorage.removeItem('token');
+    alert('Déconnexion réussie !');
+    window.location.href = '/index';
+};
+</script>
+</body>
+</html>
