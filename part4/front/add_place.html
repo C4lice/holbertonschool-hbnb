@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Place</title>
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" id="logo">
+            <img src="images/logo.png" class="logo" alt="HBnB Logo" width="150" height="50">
+        </a>
+        <div id="login-link">
+            <button>Login</button>
+        </div>
+        <div id="logout-link">
+            <button>Logout</button>
+        </div>
+        <div id="api_status" style="width: 15px; height: 15px; background-color: #ccc; border-radius: 50%; display: inline-block; margin-left: 10px;">
+        </div>
+    </header>
+    <!-- MAIN -->
+    <main>
+        <div class="center">
+            <div class="container">
+                <div class="place-submission">
+                    <section id="place">
+                        <h3>Ajouter un nouveau lieu</h3>
+                        <form id="place-form">
+                            <input type="text" name="name" placeholder="Nom du lieu" required>
+                            <textarea name="description" placeholder="Description" required></textarea>
+                            <input type="number" name="rooms" placeholder="Nombre de chambres" required>
+                            <input type="number" name="bathrooms" placeholder="Nombre de salles de bain" required>
+                            <input type="number" name="guests" placeholder="Nombre de personnes" required>
+                            <input type="number" name="price" placeholder="Prix par nuit" required>
+                            <input type="text" name="user_id" placeholder="ID utilisateur" required>
+                            <input type="text" name="city_id" placeholder="ID ville" required>
+                            <button type="submit">Ajouter le lieu</button>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2025 Aupetit Laura - Holberton School.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
