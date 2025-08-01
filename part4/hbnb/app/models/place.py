@@ -22,7 +22,70 @@ class Place(BaseModel):
 
     reviews = relationship('Review', backref='place', lazy=True)
     amenities = relationship('Amenity', secondary=place_amenity, backref=db.backref('places', lazy='dynamic'))
+    document.getElementById('new-place-form').onsubmit = function(event) {
+    event.preventDefault();
+    const name = document.getElementById('place-name').value;
+    fetch('http://localhost:5001/api/v1/amenities/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name })
+    })
+    .then(response => {
+        if (response.ok) {
+            // Ajoute l'amenity dans la liste amenities
+            const ul = document.querySelector('#amenities ul.row');
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div class="amenity-widget" style="border:1px solid #ccc; border-radius:8px; padding:1rem; margin:1rem 0; background:#fafafa;">
+                    <strong>${name}</strong><br>
+                    <button class="louer-btn" style="margin:0.5rem;">Louer</button>
+                    <button class="visiter-btn" style="margin:0.5rem;">Visiter</button>
+                </div>
+            `;
+            ul.appendChild(li);
 
+            li.querySelector('.louer-btn').onclick = function() {
+                alert('Fonction Louer à implémenter');
+            };
+            li.querySelector('.visiter-btn').onclick = function() {
+                alert('Fonction Visiter à implémenter');
+            };
+
+            alert('Amenity créée avec succès !');
+            document.getElementById('place-popup').style.display = 'none';
+        } else {
+            alert('Erreur lors de la création de l\'amenity.');
+        }
+    });
+};
+    .then(response => {
+    if (response.ok) {
+        const ul = document.querySelector('#places ul.row');
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <div class="place-widget" style="border:1px solid #ccc; border-radius:8px; padding:1rem; margin:1rem 0; background:#fafafa;">
+                <strong>${name}</strong><br>
+                Chambres: ${rooms} | Surface: ${surface} m² | Capacité: ${capacity} personnes<br>
+                <button class="louer-btn" style="margin:0.5rem;">Louer</button>
+                <button class="visiter-btn" style="margin:0.5rem;">Visiter</button>
+            </div>
+        `;
+        ul.appendChild(li);
+
+        // Actions pour les boutons (exemple)
+        li.querySelector('.louer-btn').onclick = function() {
+            alert('Fonction Louer à implémenter');
+        };
+        li.querySelector('.visiter-btn').onclick = function() {
+            alert('Fonction Visiter à implémenter');
+        };
+
+        alert('Place créée avec succès !');
+        document.getElementById('place-popup').style.display = 'none';
+    } else {
+        alert('Erreur lors de la création de la place.');
+    }
+});
     @validates('title')
     def validate_title(self, key, value):
         if value == "" or len(value) > 50:
