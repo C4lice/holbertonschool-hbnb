@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <img src="/static/images/logo.png" alt="App Logo" class="logo">
+        <nav>
+            <a href="/index" class="home-button">Home</a>
+            <a href="/login" id="login-link" class="login-button">Login</a>
+        </nav>
+    </header>
+    <main>
+        <img class="bg-image" src="/static/images/beach.jpg" alt="beach background">
+        <form id="login-form">
+            <h2>Login</h2>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+    </main>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2025 Aupetit Laura - Holberton School.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

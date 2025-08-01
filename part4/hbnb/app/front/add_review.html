@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Review</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <img src="/static/images/logo.png" alt="App Logo" class="logo">
+        <nav>
+            <a href="/index" class="home-button">Home</a>
+            <a href="/login" id="login-link" class="login-button">Login</a>
+        </nav>
+    </header>
+    <main>
+        <h1 class="reviewing">Reviewing: <span id="place-name">Sample Place</span></h1>
+        <form id="review-form" class="add-review-form">
+            <h2>Add a Review</h2>
+            <label for="review">Your Review:</label>
+            <textarea id="review" name="review" required></textarea>
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating" required>
+                <option value="1">1 &#11088;</option>
+                <option value="2">2 &#11088;&#11088;</option>
+                <option value="3">3 &#11088;&#11088;&#11088;</option>
+                <option value="4">4 &#11088;&#11088;&#11088;&#11088;</option>
+                <option value="5">5 &#11088;&#11088;&#11088;&#11088;&#11088;</option>
+            </select>
+            <button type="submit">Submit Review</button>
+        </form>
+    </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 Aupetit Laura - Holberton School.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

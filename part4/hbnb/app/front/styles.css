@@ -1,0 +1,280 @@
+.logo {
+    height: 50px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.login-button {
+    background-color: #A9A9A9;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.login-button:hover {
+    background-color: #777;
+}
+
+.home-button {
+    background-color: #A9A9A9;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.home-button:hover {
+    background-color: #777;
+} 
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    padding-bottom:60px;
+}
+
+header {
+    background-color: #165f75;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+main {
+    padding: 2rem;
+}
+
+.bg-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.bg-image-place::before {
+    background-image: url(/front/images/fond.jpg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    background-color: #316969;
+    color: #fff;
+    margin-top: 2rem;
+    position: fixed;
+    bottom: 0;
+}
+
+.place-card,
+.review-card {
+    max-width: 800px;
+    width: 90%;
+    height: auto;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.place-card {
+    width: calc(33.3% - 40px);
+}
+
+.place-card h2 {
+    margin-bottom: 0.5rem;
+}
+
+.place-card p {
+    margin-bottom: 1rem;
+}
+
+
+#filter {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.login-form button {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #555;
+}
+
+form h2 {
+    margin-bottom: 1rem;
+}
+
+form label {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.add-review-form,
+form {
+    max-width: 800px;
+    width: 90%;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+form {
+    background-color:  rgba(255,255,255,0.7);
+}
+
+.add-review-form {
+    background-color: #fff;
+}
+
+
+
+form button,
+.add-review-form button {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover,
+.add-review-form button:hover {
+    background-color: #555;
+}
+
+.details-button {
+    background-color: #488792;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.details-button:hover {
+    background-color: #778899;
+}
+
+.place-card h2 {
+    margin-bottom: 0.5rem;
+}
+
+.place-card p {
+    margin-bottom: 1rem;
+}
+
+#places-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.add-review-form label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+}
+
+.add-review-form textarea,
+.add-review-form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.reviewing {
+    text-align: center;
+}
+
+.place-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+#place-detail {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+#place-detail p {
+    margin-bottom: 0.8rem;
+}
+
+.reviews-header {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.review-card p {
+    margin: 0.3rem 0;
+}
+
+.amenities-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#add-review h2{
+    text-align: center;
+}
