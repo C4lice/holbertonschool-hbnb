@@ -19,6 +19,51 @@
         <button type="submit">S'inscrire</button>
     </form>
 </div>
+<script>
+document.querySelectorAll('button').forEach(function(btn) {
+    if (btn.textContent.trim() === 'New Place') {
+        btn.onclick = function() {
+            document.getElementById('place-popup').style.display = 'block';
+        };
+    }
+    <div id="place-popup" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%); background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2); z-index:1000;">
+    <h2>Créer une nouvelle place</h2>
+    <form id="new-place-form">
+        <label for="place-rooms">Nombre de chambres :</label><br>
+        <input type="number" id="place-rooms" name="rooms" min="1" max="50" required><br>
+        <label for="place-surface">Surface (m²) :</label><br>
+        <input type="number" id="place-surface" name="surface" min="10" max="500" step="5" required><br>
+        <label for="place-capacity">Capacité (personnes) :</label><br>
+        <input type="number" id="place-capacity" name="capacity" min="1" max="250" required><br><br>
+        <button type="submit">Créer</button>
+        <button type="button" id="close-place-popup">Annuler</button>
+    </form>
+</div>
+});
+document.getElementById('close-place-popup').onclick = function() {
+    document.getElementById('place-popup').style.display = 'none';
+};
+document.getElementById('new-place-form').onsubmit = function(event) {
+    event.preventDefault();
+    const rooms = document.getElementById('place-rooms').value;
+    const surface = document.getElementById('place-surface').value;
+    const capacity = document.getElementById('place-capacity').value;
+    // Exemple d'envoi vers l'API (à adapter selon ton backend)
+    fetch('http://localhost:5001/api/v1/places/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rooms, surface, capacity })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Place créée avec succès !');
+            document.getElementById('place-popup').style.display = 'none';
+        } else {
+            alert('Erreur lors de la création de la place.');
+        }
+    });
+};
+</script>
 <body>
     <!-- HEADER -->
     <header class="header">
@@ -87,7 +132,22 @@
                 <!-- PLACES -->
                 </ul>
             </div>
-            <div id="new-place">
+            <div id="place-popup" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%); background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2); z-index:1000;">
+    <h2>Créer une nouvelle place</h2>
+    <form id="new-place-form">
+        <label for="place-name">Nom de la place :</label><br>
+        <input type="text" id="place-name" name="name" required><br>
+        <label for="place-rooms">Nombre de chambres :</label><br>
+        <input type="number" id="place-rooms" name="rooms" min="1" max="50" required><br>
+        <label for="place-surface">Surface (m²) :</label><br>
+        <input type="number" id="place-surface" name="surface" min="10" max="500" step="5" required><br>
+        <label for="place-capacity">Capacité (personnes) :</label><br>
+        <input type="number" id="place-capacity" name="capacity" min="1" max="250" required><br><br>
+        <button type="submit">Créer</button>
+        <button type="button" id="close-place-popup">Annuler</button>
+    </form>
+</div>
+        <div    id="new-place">
                 <button>New Place</button>
                 <script>
 document.querySelectorAll('button').forEach(function(btn) {
@@ -110,6 +170,67 @@ document.querySelectorAll('button').forEach(function(btn) {
     <script>
 document.querySelector('#login-link button').onclick = function() {
     document.getElementById('signup-form').style.display = 'block';
+};
+</script>
+<script>
+document.querySelector('#new-place button').onclick = function() {
+    document.getElementById('place-popup').style.display = 'block';
+};
+document.getElementById('close-place-popup').onclick = function() {
+    document.getElementById('place-popup').style.display = 'none';
+};
+document.getElementById('new-place-form').onsubmit = function(event) {
+    event.preventDefault();
+    const name = document.getElementById('place-name').value;
+    const rooms = document.getElementById('place-rooms').value;
+    const surface = document.getElementById('place-surface').value;
+    const capacity = document.getElementById('place-capacity').value;
+    fetch('http://localhost:5001/api/v1/places/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, rooms, surface, capacity })
+    })
+    .then(response => {
+        if (response.ok) {
+            // Ajoute la place dans la liste amenities (ou places)
+            const ul = document.querySelector('#places ul.row');
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>${name}</strong><br>
+                Chambres: ${rooms} | Surface: ${surface} m² | Capacité: ${capacity} personnes`;
+            ul.appendChild(li);
+            alert('Place créée avec succès !');
+            document.getElementById('place-popup').style.display = 'none';
+        } else {
+            alert('Erreur lors de la création de la place.');
+        }
+    });
+};
+</script>
+<script>
+document.querySelector('#new-place button').onclick = function() {
+    document.getElementById('place-popup').style.display = 'block';
+};
+document.getElementById('close-place-popup').onclick = function() {
+    document.getElementById('place-popup').style.display = 'none';
+};
+document.getElementById('new-place-form').onsubmit = function(event) {
+    event.preventDefault();
+    const rooms = document.getElementById('place-rooms').value;
+    const surface = document.getElementById('place-surface').value;
+    const capacity = document.getElementById('place-capacity').value;
+    fetch('http://localhost:5001/api/v1/places/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rooms, surface, capacity })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Place créée avec succès !');
+            document.getElementById('place-popup').style.display = 'none';
+        } else {
+            alert('Erreur lors de la création de la place.');
+        }
+    });
 };
 </script>
 </body>
