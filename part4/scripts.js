@@ -1,5 +1,5 @@
 :root {
-	--color-primary: #ff375c;
+	--color-primary: #2b0a10;
 	--color-black: #090909;
 	--color-white: #fafafa;
 	--color-light-grey: #f2f2f2;
@@ -268,7 +268,7 @@ main #review input {
 
 .logo-red-top {
     fill: none;
-    stroke: #ff375c;
+    stroke: #2b0a10;
     stroke-linecap: round;
     stroke-miterlimit: 10;
     stroke-width: 5px;
@@ -288,7 +288,7 @@ main #review input {
 
 .logo-red-bottom {
     fill: none;
-    stroke: #ff375c;
+    stroke: #2b0a10;
     stroke-linecap: round;
     stroke-miterlimit: 10;
     stroke-width: 5px;
