@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Places</title>
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" id="logo">
+            <img src="images/logo.png" class="logo" alt="HBnB Logo" width="150" height="50">
+        </a>
+        <div id="login-link">
+            <button >Login</button>
+        </div>
+        <div id="logout-link">
+            <button>Logout</button>
+        </div>
+    </header>
+    <!-- MAIN -->
+    <main>
+        <div id="filter">
+            <div class="container">
+                <div class="row">
+                    <div class="filter-card">
+                        <label for="price-filter">Price &lt;
+                            <select id="price-filter">
+                                <option value=0 selected>All</option>
+                                <option value=50>$50</option>
+                                <option value=100>$100</option>
+                                <option value=250>$250</option>
+                                <option value=500>$500</option>
+                                <option value=750>$750</option>
+                                <option value=1000>$1000</option>
+                            </select>
+                        </label>
+
+                        <label for="capacity-filter">Capacity &gt;
+                            <input type="number" id="capacity-filter" value="1" min="1" max="250">
+                        </label>
+                        
+                        <label for="rooms-filter">Rooms &gt;
+                            <input type="number" id="rooms-filter" value="1" min="1" max="50">
+                        </label>
+
+                        <label for="surface-filter">Surface &gt;
+                            <input type="number" id="surface-filter" value="10" min="10" max="500" step="5">
+                            m<sup>2</sup>
+                        </label>
+
+                        <details class="amenities-filter">
+                            <summary>Amenities</summary>
+                            <form id="amenities">
+                                <fieldset>
+                                    <ul>
+                                    <!-- AMENITIES -->
+                                    </ul>
+                                </fieldset>
+                            </form>
+                        </details>
+
+                        <button type="submit" id="filter-button">Filter</button>
+
+                        <button type="submit" id="reset-button">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="places">
+            <div class="container">
+                <ul class="row">
+                <!-- PLACES -->
+                </ul>
+            </div>
+            <div id="new-place">
+                <button>New Place</button>
+            </div>
+        </div>
+    </main>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2025 Aupetit Laura - Holberton School.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

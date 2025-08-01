@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" id="logo">
+            <img src="images/logo.png" class="logo" alt="HBnB Logo" width="150" height="50">
+        </a>
+        <div id="login-link">
+            <button>Login</button>
+        </div>
+        <div id="logout-link">
+            <button>Logout</button>
+        </div>
+    </header>
+    <!-- MAIN -->
+    <main>
+        <form id="login-form">
+            <div class="center">
+                <div class="container">
+                    <div class="login-card">
+                        <div id="animation" style="display:none;">
+                            <div class="container">
+                                <svg id="logo-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="10em" height="10em">
+                                    <path class="logo-grey" d="M6.25,50v23.634c0,8.702,4.832,13.866,10.794,13.866h0c5.961,0,9.559-6.608,12.089-13.866l8.433-21.113c2.412-6.667,6.473-11.975,12.434-11.975,5.961,0,10.023,5.308,12.434,11.975l8.433,21.113c2.53,7.257,6.128,13.866,12.089,13.866h0c5.961,0,10.794-5.164,10.794-13.866v-23.634s0-23.634,0-23.634c0-8.702-4.832-13.866-10.794-13.866h0c-5.961,0-9.559,6.608-12.089,13.866l-8.433,21.113c-2.412,6.667-6.473,11.975-12.434,11.975-5.961,0-10.023-5.308-12.434-11.975l-8.433-21.113c-2.53-7.257-6.128-13.866-12.089-13.866h0c-5.961,0-10.794,5.164-10.794,13.866v23.634Z"/>
+                                    <path class="logo-red-top" d="M6.25,50v23.634c0,8.702,4.832,13.866,10.794,13.866h0c5.961,0,9.559-6.608,12.089-13.866l8.433-21.113c2.412-6.667,6.473-11.975,12.434-11.975,5.961,0,10.023,5.308,12.434,11.975l8.433,21.113c2.53,7.257,6.128,13.866,12.089,13.866h0c5.961,0,10.794-5.164,10.794-13.866v-23.634s0-23.634,0-23.634c0-8.702-4.832-13.866-10.794-13.866h0c-5.961,0-9.559,6.608-12.089,13.866l-8.433,21.113c-2.412,6.667-6.473,11.975-12.434,11.975-5.961,0-10.023-5.308-12.434-11.975l-8.433-21.113c-2.53-7.257-6.128-13.866-12.089-13.866h0c-5.961,0-10.794,5.164-10.794,13.866v23.634Z"/>
+                                    <path class="logo-red-bottom" d="M6.25,50v23.634c0,8.702,4.832,13.866,10.794,13.866h0c5.961,0,9.559-6.608,12.089-13.866l8.433-21.113c2.412-6.667,6.473-11.975,12.434-11.975,5.961,0,10.023,5.308,12.434,11.975l8.433,21.113c2.53,7.257,6.128,13.866,12.089,13.866h0c5.961,0,10.794-5.164,10.794-13.866v-23.634s0-23.634,0-23.634c0-8.702-4.832-13.866-10.794-13.866h0c-5.961,0-9.559,6.608-12.089,13.866l-8.433,21.113c-2.412,6.667-6.473,11.975-12.434,11.975-5.961,0-10.023-5.308-12.434-11.975l-8.433-21.113c-2.53-7.257-6.128-13.866-12.089-13.866h0c-5.961,0-10.794,5.164-10.794,13.866v23.634Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div id="login">
+                            <h3>Login</h3>
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                            <input type="password" id="password" name="password" placeholder="Password" required>
+                            <button type="submit">Login</button>
+                            <a href="add_account.html" class="link">Create Account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2025 Aupetit Laura - Holberton School.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
